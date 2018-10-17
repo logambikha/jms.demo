@@ -1,0 +1,23 @@
+package com.capgemini.Hello;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	
+        System.out.println( "Hello World!" );
+    
+   try { 
+    InitialContext initialContext = new InitialContext();
+   } catch(NamingException e) {
+	   e.printStackTrace();
+   }
+  }
+}

@@ -1,0 +1,42 @@
+package com.capgemini.Hello;
+
+import javax.jms.JMSException;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.sun.messaging.ConnectionFactory;
+import com.sun.messaging.QueueConnectionFactory;
+import com.sun.messaging.jmq.jmsserver.core.Queue;
+import com.sun.messaging.jmq.jmsserver.core.Session;
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	
+        System.out.println( "Hello World!" );
+        
+        ConnectionFactory connectionFactory;
+    
+   try { 
+    InitialContext initialContext = new InitialContext();
+    Queue queue = (Queue) initialContext.lookup(name:"jms/P2PQueue");
+    connectionFactory = (QueueConnectionFactory)
+    		initialContext.lookup(name:"jms/__defaultConnectionFactory");
+    
+    connection = connectionFactory.createConnection();
+    Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
+   
+   
+   } catch(NamingException e) {
+	   e.printStackTrace();
+   } catch (JMSException e) {
+   		e.printStackTrace();
+   }
+  }
+}
